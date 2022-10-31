@@ -1,54 +1,87 @@
-# Operator-Overloading
+### EX NO : 06
+### DATE  : 
+# <p align="center">Operator-Overloading</p>
+
 
 ## Aim:
- To write a C# program to find the volume of a box using operator overloading
-
-## Algorithm:
+To write a C# program to pass values through constructors(default and parameterized) and also overload equal operators by checking whether objects are equal using operator overloading. 
  
- 1) Create a class for operator overloading
- 2) get inputs for length,breadthandheight of the box fromthe user and then calculate the volume in overloading function
- 3) after that return a new object for the calculated volume
- 4) then create a new object to store the return object
- 5) After that print the calculated volume
+## Algorithm:
+### Step1:
+Create a class for operator overloading.
+### Step2:
+Values are passed through constructors.
+### Step3:
+After that return the bool operator.
+### Step4:
+Then create a new object to store the return object.
+### Step5:
+After that print the calculated volume.
+ 
  
  ## Program:
  ```c#
  using System;
-class example
+
+namespace OperatorOverloading
 {
-    public int length, breadth,height, volume;
-    public static example operator +(example e1, example e2)
+    class program
     {
-        example e3 = new example();
-        Console.WriteLine("Box1");
-        Console.WriteLine(e1.length * e1.breadth * e1.height);
-        Console.WriteLine("Box2");
-        Console.WriteLine(e2.length * e2.breadth * e2.height);
-        e3.length = e1.length + e2.length;
-        e3.breadth = e1.breadth + e2.breadth;
-        e3.height = e1.height + e2.height;
-        e3.volume = e3.length * e3.breadth * e3.height;
-        return e3;
-    }
-    public static void Main()
-    {
-        example e1 = new example();
-        e1.length = Convert.ToInt32(Console.ReadLine());
-        e1.breadth = Convert.ToInt32(Console.ReadLine());
-        e1.height = Convert.ToInt32(Console.ReadLine());
-        example e2 = new example();
-        e2.length = Convert.ToInt32(Console.ReadLine());
-        e2.breadth = Convert.ToInt32(Console.ReadLine());
-        e2.height = Convert.ToInt32(Console.ReadLine());
-        example e4 = new example();
-        e4 = e1 + e2;
-        Console.WriteLine("Box3");
-        Console.WriteLine(e4.volume);
+        public static bool operator ==(program p1, program p2)
+        {
+            return p1.Equals(p2);
+        }
+        /*public static bool operator ==(program p3, program p4)
+        {
+            return p3.Equals(p4);
+        }*/
+
+        public static bool operator !=(program p1, program p2)
+        {
+            return !(p1 == p2);
+            //return !(p3 == p4);
+        }
+
+        public int p1,p2;
+        public program()
+        {
+            p1 = 45;
+            p2 =15;
+        }
+
+        public program(int p3, int p4)
+        {
+            p1 = p3;
+            p2 = p4;
+        }
+        public static void Main()
+        {
+            program p1 = new program();
+            program p2 = p1;
+
+            if (p1 == p2)
+            {
+               
+                Console.WriteLine("both the objects are equal");
+            }
+
+            else if (p1 != p2)
+            {
+                Console.WriteLine("both the objects are not equal");
+            }
+        }
     }
 }
-```
-## Output:
-![image](https://user-images.githubusercontent.com/75235128/170470308-8fe5f176-8c25-49d0-be1d-c0909b4a9e18.png)
 
-## Result:
-Thus a C# program to find the volume of a box using operator overloading is written and executed sucessfully.
+
+
+
+ ```
+
+ 
+ ## Output:
+![image](https://user-images.githubusercontent.com/70213227/198813817-d2db239d-8555-4a87-b46a-8042be4e3f75.png)
+
+ 
+ ## Result:
+C# program to find the volume of a box using operator overloading is implemented successfully.
